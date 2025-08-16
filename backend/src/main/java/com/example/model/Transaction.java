@@ -1,12 +1,29 @@
 package com.example.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class Transaction {
     private Long transactionId;
+
+    @NotNull(message = "tradeId is required")
     private Long tradeId;
+
+    @NotNull(message = "version is required")
+    @Min(value = 1, message = "version must be >= 1")
     private Integer version;
+
+    @NotBlank(message = "securityCode is required")
     private String securityCode;
+
+    @NotNull(message = "quantity is required")
     private Integer quantity;
+
+    @NotBlank(message = "action is required")
     private String action; // INSERT, UPDATE, CANCEL
+
+    @NotBlank(message = "direction is required")
     private String direction; // Buy, Sell
 
     // Getters and Setters

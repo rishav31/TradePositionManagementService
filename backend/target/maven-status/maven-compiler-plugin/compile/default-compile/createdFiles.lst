@@ -3,6 +3,8 @@ com/example/model/Position.class
 com/example/App.class
 com/example/controller/TransactionController.class
 com/example/controller/PositionController.class
+com/example/exception/GlobalExceptionHandler.class
 com/example/model/TradeHistory.class
 com/example/service/TransactionService.class
+com/example/exception/ResourceNotFoundException.class
 com/example/model/Transaction.class

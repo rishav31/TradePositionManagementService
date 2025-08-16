@@ -1,4 +1,8 @@
+
 package com.example.controller;
+
+import org.springframework.http.ResponseEntity;
+import javax.validation.Valid;
 
 import com.example.model.Transaction;
 import com.example.service.TransactionService;
@@ -14,9 +18,11 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @PostMapping
-    public void processTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<?> processTransaction(@Valid @RequestBody Transaction transaction) {
         transactionService.processTransaction(transaction);
+        return ResponseEntity.ok().build();
     }
+
 
     @GetMapping("/latest-version")
     public int getLatestVersion(@RequestParam Long tradeId) {

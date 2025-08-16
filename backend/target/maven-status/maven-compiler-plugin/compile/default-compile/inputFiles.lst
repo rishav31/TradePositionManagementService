@@ -1,5 +1,7 @@
 /Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/App.java
 /Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/model/Position.java
+/Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/exception/ResourceNotFoundException.java
+/Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/exception/GlobalExceptionHandler.java
 /Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/controller/TransactionController.java
 /Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/model/Transaction.java
 /Users/r0j05cr/Downloads/Assessment trafigura/project/backend/src/main/java/com/example/service/TransactionService.java

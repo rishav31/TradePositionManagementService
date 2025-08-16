@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.exception.ResourceNotFoundException;
 import com.example.model.Position;
 import com.example.model.Transaction;
 import com.example.model.TradeHistory;
@@ -14,6 +15,11 @@ public class TransactionService {
     private final TradeHistory tradeHistory = new TradeHistory();
 
     public synchronized void processTransaction(Transaction tx) {
+        // Validate required fields (simulate what would happen in controller)
+        if (tx.getTradeId() == null || tx.getVersion() == null || tx.getSecurityCode() == null ||
+            tx.getQuantity() == null || tx.getAction() == null || tx.getDirection() == null) {
+            throw new IllegalArgumentException("Invalid transaction data");
+        }
         Long tradeId = tx.getTradeId();
         Integer version = tx.getVersion();
         String action = tx.getAction();
@@ -64,6 +70,10 @@ public class TransactionService {
     }
 
     public Integer getLatestVersion(Long tradeId) {
-        return tradeHistory.getLatestVersion(tradeId);
+        Integer version = tradeHistory.getLatestVersion(tradeId);
+        if (version == null) {
+            throw new ResourceNotFoundException("Not found");
+        }
+        return version;
     }
 }

@@ -1,1 +1,5 @@
+com/example/controller/TransactionControllerTest.class
+com/example/service/PositionServiceTest.class
 com/example/AppTest.class
+com/example/controller/PositionControllerTest.class
+com/example/service/TransactionServiceTest.class
