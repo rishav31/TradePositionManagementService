@@ -62,4 +62,8 @@ public class TransactionService {
         }
         return result;
     }
+
+    public Integer getLatestVersion(Long tradeId) {
+        return tradeHistory.getLatestVersion(tradeId);
+    }
 }
