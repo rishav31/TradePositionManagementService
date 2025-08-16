@@ -33,7 +33,7 @@ public class TransactionService {
         Integer quantity = tx.getQuantity();
 
         // Find latest transaction for this tradeId
-        Optional<Transaction> prevOpt = transactionRepository.findById(tradeId);
+        Optional<Transaction> prevOpt = transactionRepository.findByTradeId(tradeId);
         Transaction prev = prevOpt.orElse(null);
 
         if ("CANCEL".equalsIgnoreCase(action)) {
@@ -68,7 +68,7 @@ public class TransactionService {
 
 
     public Integer getLatestVersion(Long tradeId) {
-        Transaction tx = transactionRepository.findById(tradeId)
+        Transaction tx = transactionRepository.findByTradeId(tradeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found"));
         return tx.getVersion();
     }
