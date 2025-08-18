@@ -20,6 +20,10 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
 
 
+    public List<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
+    }
+
     public synchronized void processTransaction(Transaction tx) {
         if (tx.getTradeId() == null || tx.getVersion() == null || tx.getSecurityCode() == null ||
             tx.getQuantity() == null || tx.getAction() == null || tx.getDirection() == null) {
@@ -39,8 +43,9 @@ public class TransactionService {
         if ("CANCEL".equalsIgnoreCase(action)) {
             if (prev != null) {
                 updatePosition(prev.getSecurityCode(), prev.getDirection(), -prev.getQuantity());
-                transactionRepository.deleteById(tradeId);
             }
+            // Save the CANCEL transaction for audit/history, do not delete any transaction
+            transactionRepository.save(tx);
             return;
         }
 
